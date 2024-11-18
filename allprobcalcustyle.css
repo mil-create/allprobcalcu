@@ -1,0 +1,49 @@
+/* Icon button container styling */
+.icon-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 300px;
+}
+
+/* Styling each icon button */
+.icon-button {
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    filter: brightness(0.8); /* Makes icons a bit darker by default */
+    border: 2px solid transparent; /* Temporary debugging border */
+}
+
+/* Hover effect for icon buttons */
+.icon-button:hover {
+    transform: scale(1.1);
+    filter: brightness(1); /* Brighter on hover */
+    border: 2px solid #ffffff; /* Change border color on hover for debugging */
+}
+
+/* Active (click) effect for icons */
+.icon-button:active {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+#back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#back-button:hover {
+    background-color: #45a049;
+}

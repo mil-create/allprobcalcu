@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Calculators</title>
+    <link rel="stylesheet" href="allprobcalcustyle.css">
+</head>
+<body>
+    <div id="opening-page" class="container">
+        <h2>Select a Calculator</h2>
+        <div class="icon-buttons">
+            <img src="cardmenu.png" alt="Card Calculator" class="icon-button" onclick="loadCalculator('cardcalcu/card.html')" />
+            <img src="colorwheel.png" alt="Color Wheel Calculator" class="icon-button" onclick="loadCalculator('colorwheelcalcu/color.html')" />
+            <img src="dicemenu.png" alt="Dice Calculator" class="icon-button" onclick="loadCalculator('dicecalcu/dice.html')" />
+        </div>
+    </div>
+
+    <div id="calculator-container" class="hidden">
+        <!-- Calculator content will load here -->
+        <button id="back-button" onclick="showOpeningPage()">Back to Menu</button>
+    </div>
+
+    <script src="allprobcalcufunction.js"></script> <!-- External script if desired, or inline below -->
+</body>
+</html>
