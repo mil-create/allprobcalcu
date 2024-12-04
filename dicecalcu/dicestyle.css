@@ -1,5 +1,10 @@
+/* General body styling */
 body {
+  margin: 0; /* Remove default body margins */
+  padding: 0; /* Remove default padding */
+  height: 100vh; /* Full viewport height */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
@@ -7,62 +12,167 @@ body {
   height: 100vh;
   margin: 0;
   color: #fff;
-  }
+  overflow: auto; /* Enable scrolling when content exceeds the viewport */
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('dicebg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(3px);
+}
+
+/* Custom scrollbar styles for the container */
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(68, 68, 68, 0.715); /* Semi-transparent background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 800px; /* Fixed width for the container */
+  max-width: 90%; /* Ensure it adapts on smaller screens */
+  overflow: auto; /* Allow scrolling within the container */
+  z-index: 1;
   
-  .dice-and-input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .input-fields {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .dice-icon-container, .input-fields {
-    margin-bottom: 15px;
-  }
-  
-  button {
-    margin-top: 20px;
-  }
-  
-  .calculator-container {
-    text-align: center;
-    padding: 20px;
-    background-color: #444;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 400px;
-  }
-  
-  .dice-icon-container {
-    display: inline-block;
-    padding: 20px;
-    margin: 10px 0;
-  }
-  
-  
-  .dice-icon {
-    width: 70px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    text-align: center;
-  }
-  
-  .dice-icon:hover {
-    transform: rotate(20deg) scale(1.1);
-  }
-  
-  #rolledNumber {
-    font-size: 1.2em;
-    color: #ffffff;
-    margin-top: 8px;
-  }
-  
-  #probabilityResult {
-    margin-top: 20px;
-    font-size: 1.2em;
-  }
-  
+  /* Customizing the scrollbar appearance */
+  scrollbar-width: thin; /* Make the scrollbar thinner */
+  scrollbar-color: #555 #444; /* Set thumb and track colors */
+}
+
+/* For Webkit-based browsers like Chrome and Safari */
+.container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #555; /* Darker thumb color */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: #444; /* Darker background for the track */
+  border-radius: 8px; /* Rounded corners */
+}
+
+
+/* Heading styling */
+h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #eaeaea;
+}
+
+/* Styling for dice icon container */
+.dice-icon-container {
+  display: inline-block;
+  padding: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Dice icon styling */
+.dice-icon {
+  width: 70px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect for dice icon */
+.dice-icon:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+
+.input-section1 {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;  /* Arrange the items next to each other (horizontally) */
+  align-items: center;  /* Align the items vertically to the center */
+  justify-content: center;  /* Optionally center them horizontally within the container */
+  gap: 10px;  /* Space between the label and input, and also between pairs */
+}
+
+.input-section1 label,
+.input-section1 input {
+  margin: 0;  /* Remove any extra margin that might be added by default */
+}
+
+/* Section for inputs */
+.input-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Label styling */
+label {
+  font-weight: bold;
+  margin: 20px 20px  0 0;
+}
+
+/* Styling for number inputs */
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Styling for select box */
+select {
+  width: 15%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Button styling */
+button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Styling for probability result */
+#probabilityResult {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFD700; /* Golden color for result */
+}
+
+/* Range inputs styling */
+#rangeInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Center alignment for range inputs */
+#rangeInputs input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+

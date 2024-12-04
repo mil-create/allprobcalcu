@@ -1,9 +1,88 @@
+/* Full-page background image styling */
+body {
+    margin: 0; /* Remove default body margins */
+    padding: 0; /* Remove default padding */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Use flexbox to center the container */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    background-size: cover; /* Make the background cover the entire viewport */
+    font-family: Arial, sans-serif; /* Optional font style */
+    color: #ffffff;
+    font-size: larger;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('math.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px);
+}
+/* Center container styles */
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(68, 68, 68, 0.715); /* Semi-transparent background */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 600px; /* Fixed width for the container */
+    height: 270px;
+    max-width: 90%; /* Ensure it adapts on smaller screens */
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Santa Claus Hat */
+.santa-hat {
+    position: absolute; /* Position it relative to the container */
+    top: -55px; /* Adjust to move the hat slightly above the container */
+    left: -30px; /* Adjust to move the hat slightly to the left */
+    width: 100px; /* Adjust the size of the hat */
+    height: 90px;
+    background: url('santa-hat.png') no-repeat center center; /* Add your Santa hat image */
+    background-size: contain;
+    transform: rotate(-20deg); /* Slightly tilt the hat upwards */
+    transform-origin: bottom right; /* Anchor the tilt to the corner */
+    z-index: 2; /* Ensure it is above other elements */
+}
+
+/* Santa Head Styling */
+.santa-head {
+    position: absolute;
+    top: 50px; /* Position it above the container */
+    right: -80px; /* Position it to the right of the container */
+    width: 150px; /* Adjust the size of the Santa head */
+    height: 150px;
+    background: url('santa-head.png') no-repeat center center; /* Use your Santa head image */
+    background-size: contain;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in transition */
+    z-index: 3; /* Make sure it's above the container */
+}
+
+/* Show Santa head on hover */
+.container:hover .santa-head {
+    opacity: 1; /* Make the Santa head visible */
+}
+
+
+
+
+
 /* Icon button container styling */
 .icon-buttons {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    width: 300px;
+    justify-content: center; /* Center icons within the container */
+    flex-wrap: wrap; /* Allow wrapping if there are too many icons */
+    gap: 20px; /* Add spacing between icons */
+    margin-top: 5px;
+    width: 100%; /* Make sure it spans the full width of the container */
 }
 
 /* Styling each icon button */
@@ -12,26 +91,49 @@
     height: 60px;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
-    filter: brightness(0.8); /* Makes icons a bit darker by default */
-    border: 2px solid transparent; /* Temporary debugging border */
+    filter: brightness(0.9);
+    background-color: #555;
+    border-radius: 15px;
+    border: 2px solid #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* Hover effect for icon buttons */
 .icon-button:hover {
     transform: scale(1.1);
-    filter: brightness(1); /* Brighter on hover */
-    border: 2px solid #ffffff; /* Change border color on hover for debugging */
+    filter: brightness(1.1);
+    border: 2px solid #FFD700;
 }
 
-/* Active (click) effect for icons */
-.icon-button:active {
-    transform: scale(1.05);
+
+/* Style for the greeting */
+.greeting {
+    font-size: 30px;
+    color: #FFD700; /* Gold color for Christmas vibes */
+    margin-top: 50px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #FFD700, 0 0 10px #FF4500, 0 0 15px #32CD32;
+    animation: flicker 1.5s infinite;
 }
 
-.hidden {
-    display: none;
+/* Flickering lights animation */
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FF4500, 0 0 15px #32CD32;
+    }
+    50% {
+        opacity: 0.6;
+        text-shadow: 0 0 3px #FFD700, 0 0 8px #FF4500, 0 0 12px #32CD32;
+    }
+    75% {
+        opacity: 0.8;
+        text-shadow: 0 0 4px #FFD700, 0 0 9px #FF4500, 0 0 13px #32CD32;
+    }
 }
 
+
+/* Back button styling */
 #back-button {
     display: inline-block;
     margin: 20px;
@@ -42,8 +144,10 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #back-button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }

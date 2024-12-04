@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="dicestyle.css">
 </head>
 <body>
-  <div class="calculator-container">
-    <h3>Dice Probability Calculator</h3>
+  <div class="background"></div>
+  <div class="container">
+    <h1>Dice Probability Calculator</h1>
     
     <!-- Dice Icon and Inputs Container -->
     <div class="dice-and-input-container">
@@ -19,22 +20,39 @@
       </div>
       
       <!-- Probability Inputs -->
-      <div class="input-fields">
-        <label for="numDice">Number of Dice:</label>
-        <input type="number" id="numDice" min="1" max="10" value="1">
-  
-        <label for="targetSum">Target Sum:</label>
-        <input type="number" id="targetSum" min="2" max="12" value="7">
+      <div class="input-section1">
+         <label for="numDice">Number of Dice:</label>
+         <input type="number" id="numDice" min="1" max="10" value="2">
+         <label for="targetSum">Target Sum:</label>
+         <input type="number" id="targetSum" min="1">
+      </div>
+      
+      <div class="input-section">
+        <label for="comparisonType">Comparison Type:</label>
+        <select id="comparisonType">
+          <option value="equal">Equal to</option>
+          <option value="greater">Greater than</option>
+          <option value="less">Less than</option>
+          <option value="between">Between</option>
+        </select>
+        <br>
+
+        <div id="rangeInputs" style="display: none;">
+          <label for="rangeStart">Start of Range:</label>
+          <input type="number" id="rangeStart" />
+          <br>
+
+          <label for="rangeEnd">End of Range:</label>
+          <input type="number" id="rangeEnd" />
+        </div>
+
+        <button onclick="calculateDiscreteDiceProbability()">Calculate</button>
+        <p id="probabilityResult">Enter your values and press "Calculate."</p>
       </div>
     </div>
-  
-    <button onclick="calculateProbability()">Calculate Probability</button>
-    <div id="probabilityResult"></div>
   </div>
-  
+
   <!-- JavaScript file -->
   <script src="dicefunction.js"></script>
-
 </body>
 </html>
-

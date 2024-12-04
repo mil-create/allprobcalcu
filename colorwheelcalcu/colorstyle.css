@@ -1,5 +1,8 @@
 body {
     display: flex;
+    margin: 0; /* Remove default body margins */
+    padding: 0; /* Remove default padding */
+    height: 100vh; /* Full viewport height */
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
@@ -7,16 +10,49 @@ body {
     height: 100vh;
     margin: 0;
     color: #fff;
+    overflow: auto; /* Enable scrolling when content exceeds the viewport */
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('colorbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(3px);
 }
 
 .container {
     text-align: center;
     padding: 20px;
-    background-color: #444;
+    background-color: rgba(68, 68, 68, 0.715); /* Semi-transparent background */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    width: 800px; /* Fixed width for the container */
+    max-width: 90%; /* Ensure it adapts on smaller screens */
+    z-index: 1;
+
+    /* Customizing the scrollbar appearance */
+    scrollbar-width: thin; /* Make the scrollbar thinner */
+    scrollbar-color: #555 #444; /* Set thumb and track colors */
 }
+
+/* For Webkit-based browsers like Chrome and Safari */
+.container::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar */
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background-color: #555; /* Darker thumb color */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  .container::-webkit-scrollbar-track {
+    background-color: #444; /* Darker background for the track */
+    border-radius: 8px; /* Rounded corners */
+  }
 
 h1 {
     font-size: 24px;
@@ -71,7 +107,7 @@ input[type="number"] {
     margin-bottom: 10px;
 }
 
-.calculate-btn {
+.input-section button {
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -82,12 +118,14 @@ input[type="number"] {
     transition: background-color 0.3s;
 }
 
-.calculate-btn:hover {
+.input-section button:hover {
     background-color: #218838;
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 .result {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #ddd;
+    margin-top: 20px;
+    font-size: 18px; /* Slightly larger font size */
+    font-weight: bold; /* Emphasize the result */
+    color: #FFD700; /* Golden color for the result text */
 }

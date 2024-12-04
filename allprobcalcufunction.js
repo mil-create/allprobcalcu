@@ -3,40 +3,46 @@ function loadCalculator(calculatorFile) {
     const calculatorContainer = document.getElementById('calculator-container');
     calculatorContainer.classList.remove('hidden');
 
-    // Fetch the calculator HTML file directly
+    // Clear any previously loaded content
+    calculatorContainer.innerHTML = '';
+
+    // Fetch the calculator HTML file
     fetch(calculatorFile)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to load file: ${calculatorFile}`);
-            }
+        .then((response) => {
+            if (!response.ok) throw new Error(`Failed to load: ${calculatorFile}`);
             return response.text();
         })
-        .then(data => {
-            // Load the calculator content and include Back button
+        .then((data) => {
+            // Insert the calculator's HTML into the container
             calculatorContainer.innerHTML = data;
+
+            // Add the Back button dynamically
             if (!document.getElementById('back-button')) {
-                calculatorContainer.innerHTML += '<button id="back-button" onclick="showOpeningPage()">Back to Menu</button>';
+                const backButton = document.createElement('button');
+                backButton.id = 'back-button';
+                backButton.textContent = 'Back to Menu';
+                backButton.onclick = showOpeningPage;
+                calculatorContainer.appendChild(backButton);
             }
 
-            // Load specific JS and CSS files based on calculatorFile path
+            // Dynamically load calculator-specific styles and scripts
             if (calculatorFile.includes('cardcalcu')) {
-                loadExternalJS('cardcalcu/card1.js');
                 loadExternalCSS('cardcalcu/cardstyle.css');
+                loadExternalJS('cardcalcu/card1.js');
             } else if (calculatorFile.includes('colorwheelcalcu')) {
-                loadExternalJS('colorwheelcalcu/colorfunction.js');
                 loadExternalCSS('colorwheelcalcu/colorstyle.css');
-            } else if (calculatorFile.includes('dicecalcu')) { 
-                loadExternalJS('dicecalcu/dicefunction.js');
+                loadExternalJS('colorwheelcalcu/colorfunction.js');
+            } else if (calculatorFile.includes('dicecalcu')) {
                 loadExternalCSS('dicecalcu/dicestyle.css');
+                loadExternalJS('dicecalcu/dicefunction.js');
             }
         })
-        .catch(error => {
-            console.error('Error loading calculator file:', error);
-            showOpeningPage(); // Go back to menu if loading fails
+        .catch((error) => {
+            console.error('Error:', error);
+            showOpeningPage(); // Go back to the menu if loading fails
         });
 }
 
-// Helper function to load external JavaScript files only once
 function loadExternalJS(file) {
     if (!document.querySelector(`script[src="${file}"]`)) {
         const script = document.createElement('script');
@@ -45,7 +51,6 @@ function loadExternalJS(file) {
     }
 }
 
-// Helper function to load external CSS files only once
 function loadExternalCSS(file) {
     if (!document.querySelector(`link[href="${file}"]`)) {
         const link = document.createElement('link');
@@ -55,9 +60,10 @@ function loadExternalCSS(file) {
     }
 }
 
-// Function to return to the opening page
 function showOpeningPage() {
     document.getElementById('calculator-container').classList.add('hidden');
     document.getElementById('opening-page').classList.remove('hidden');
     document.getElementById('calculator-container').innerHTML = ''; // Clear previous calculator content
 }
+
+

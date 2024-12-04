@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="colorstyle.css">
 </head>
 <body>
+    <div class="background"></div>
     <div class="container">
         <h1>Color Wheel Probability Calculator</h1>
         <p>Select a color to calculate probability:</p>
@@ -21,10 +22,14 @@
         <div class="input-section">
             <label for="numDraws">Number of Times Color Drawn:</label>
             <input type="number" id="numDraws" value="1" min="1">
-            <button class="calculate-btn" onclick="calculateProbability()">Calculate Probability</button>
+
+            <label for="desiredOccurrences">Desired Occurrences (k):</label>
+            <input type="number" id="desiredOccurrences" value="0" min="0" />
+
+            <button onclick="calculateDiscreteProbability()">Calculate Probability</button>
         </div>
         <div class="result">
-            <p id="probabilityResult">Select a color to calculate probability.</p>
+            <p id="probabilityResult">Select a color and enter values to calculate probability.</p>
         </div>
     </div>
     <script src="colorfunction.js"></script>
