@@ -8,8 +8,20 @@ body {
     justify-content: center; /* Center horizontally */
     background-size: cover; /* Make the background cover the entire viewport */
     font-family: Arial, sans-serif; /* Optional font style */
-    color: #ffffff;
+    color: gold;
     font-size: larger;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .background {
