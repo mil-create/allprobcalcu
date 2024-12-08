@@ -26,33 +26,35 @@ body {
 
 .container {
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     background-color: rgba(68, 68, 68, 0.715); /* Semi-transparent background */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 800px; /* Fixed width for the container */
     max-width: 90%; /* Ensure it adapts on smaller screens */
+    max-height: 90%; /* Set a max height for scrolling */
+    overflow: auto; /* Enable vertical scrolling when needed */
     z-index: 1;
 
     /* Customizing the scrollbar appearance */
-    scrollbar-width: thin; /* Make the scrollbar thinner */
-    scrollbar-color: #555 #444; /* Set thumb and track colors */
+    scrollbar-width: thin; /* Make the scrollbar thinner (Firefox) */
+    scrollbar-color: #555 #444; /* Thumb and track colors (Firefox) */
 }
 
-/* For Webkit-based browsers like Chrome and Safari */
+/* Scrollbar styling for WebKit-based browsers (Chrome, Safari, Edge) */
 .container::-webkit-scrollbar {
-    width: 8px; /* Thin scrollbar */
-  }
-  
-  .container::-webkit-scrollbar-thumb {
-    background-color: #555; /* Darker thumb color */
-    border-radius: 8px; /* Rounded corners */
-  }
-  
-  .container::-webkit-scrollbar-track {
-    background-color: #444; /* Darker background for the track */
-    border-radius: 8px; /* Rounded corners */
-  }
+    width: 8px; /* Width of the scrollbar */
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #555; /* Thumb color */
+    border-radius: 8px; /* Rounded thumb corners */
+}
+
+.container::-webkit-scrollbar-track {
+    background-color: #444; /* Track color */
+    border-radius: 8px; /* Rounded track corners */
+}
 
 h1 {
     font-size: 24px;
@@ -128,4 +130,24 @@ input[type="number"] {
     font-size: 18px; /* Slightly larger font size */
     font-weight: bold; /* Emphasize the result */
     color: #FFD700; /* Golden color for the result text */
+    text-align: left;
+}
+
+.result1 {
+    margin-top: 20px;
+    font-size: 18px; /* Slightly larger font size */
+    font-weight: bold; /* Emphasize the result */
+    color: #FFD700; /* Golden color for the result text */
+    text-align: center;
+}
+
+
+.circle-list {
+    list-style-type: circle; /* Default circle bullets */
+    padding-left: 0px; /* Space for the bullet */
+    text-align: left; /* Align the list text properly */
+}
+
+.circle-list li {
+    display: inline-block; /* Keeps items in a horizontal layout if needed */
 }

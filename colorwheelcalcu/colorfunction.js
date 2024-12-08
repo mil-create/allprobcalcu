@@ -43,10 +43,6 @@ function calculateDiscreteProbability() {
     const p = 1 / totalColors; // Probability of drawing the selected color
 
     // Formula: P(X = k) = C(n, k) * p^k * (1-p)^(n-k)
-    // Where:
-    // n = numDraws (total number of draws)
-    // k = desiredOccurrences (desired number of occurrences)
-    // p = probability of drawing the selected color
     const probability =
         combination(numDraws, desiredOccurrences) *
         Math.pow(p, desiredOccurrences) *
@@ -55,29 +51,50 @@ function calculateDiscreteProbability() {
     // Convert the probability to a percentage
     const percentage = (probability * 100).toFixed(2);
 
+    // Use MathJax syntax to display the math equations
     const explanation = `
-     <p align="left">You are spinning the wheel <strong>${numDraws}</strong> times.</p>
-     <p align="left">You want to calculate the probability of the color <strong>${selectedColor}</strong> appearing exactly <strong>${desiredOccurrences}</strong> times.</p>
-
-     <p align="left">The probability of landing on <strong>${selectedColor}</strong> in any single spin is p = 1/${totalColors} = <strong>${p.toFixed(2)}</strong>.</p>
-
-      <p align="left">The probability of <strong>not</strong> landing on ${selectedColor} in a single spin is <strong>${(1 - p).toFixed(2)}</strong>.</p>
-
-     <p align="left">Since you want <strong>${desiredOccurrences}</strong> occurrences of ${selectedColor}, the remaining <strong>${numDraws - desiredOccurrences}</strong> spins must not land on ${selectedColor}. This gives us the term <strong>(1 - p)^${numDraws - desiredOccurrences} = ${(1 - p).toFixed(2)}^${numDraws - desiredOccurrences}</strong>.</p>
-
-     <p align="left">Using the binomial probability formula, the calculation is as follows:</p>
-
-     <p align="left">
-         P(X = <strong>${desiredOccurrences}</strong>) = 
-         C(${numDraws}, ${desiredOccurrences}) * 
-         (<strong>${p.toFixed(2)})^${desiredOccurrences}</strong> * 
-         (<strong>${(1 - p).toFixed(2)})^${numDraws - desiredOccurrences}</strong>
-         </p>
-
-     <p align="left">This gives a probability of <strong>${percentage}%</strong>.</p>
+    <p>You are spinning the wheel <strong>${numDraws}</strong> times.</p>
+    <p>You want to calculate the probability of the color <strong>${selectedColor}</strong> appearing exactly <strong>${desiredOccurrences}</strong> times during these spins.</p>
+    
+    <p>The formula used is:</p>
+    <p>\\[
+        P(X = k) = C(n, k) \\cdot p^k \\cdot (1 - p)^{n-k}
+    \\]</p>
+    
+    <p>Here’s what the formula means:</p>
+    <ul class="circle-list">
+        <li><strong>C(n, k)</strong>: The number of ways to choose <strong>${desiredOccurrences}</strong> successes out of <strong>${numDraws}</strong> trials.</li>
+        <li><strong>p</strong>: The probability of landing on the color <strong>${selectedColor}</strong> in a single spin.</li>
+         \\[
+         p = \\frac 1 \ 6 = 0.17</li>
+         \\]
+        <li><strong>1 - p</strong>: The probability of NOT landing on <strong>${selectedColor}</strong> in a single spin.</li>
+        \\[
+        (1 - p) = 0.83\\]
+    </ul>
+    
+    <p>Next, we substitute the values into the formula:</p>
+    <p>\\[
+        P(X = ${desiredOccurrences}) = 
+        C(${numDraws}, ${desiredOccurrences}) \\cdot 
+        (${p.toFixed(2)})^{${desiredOccurrences}} \\cdot 
+        (${(1 - p).toFixed(2)})^{${numDraws - desiredOccurrences}}
+    \\]</p>
+    
+    <p>After calculating, the probability is:</p>
+    <p>\\[
+        P(X = ${desiredOccurrences}) = ${percentage}\\%
+    \\]</p>
+    
+    <p>This means there is a <strong>${percentage}%</strong> chance that the color <strong>${selectedColor}</strong> will appear exactly <strong>${desiredOccurrences}</strong> times in <strong>${numDraws}</strong> spins.</p>
 `;
+
+
 
 
     // Display the result
     document.getElementById('probabilityResult').innerHTML = explanation;
+
+    // Trigger MathJax to render the equations
+    MathJax.typeset();
 }

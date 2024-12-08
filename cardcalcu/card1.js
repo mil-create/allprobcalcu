@@ -3,7 +3,7 @@ let selectedCardType = 'spade';
 function toggleCard() {
     const cardTypes = ['spade', 'heart', 'diamond', 'club'];
     const cardIcons = ['spade.png', 'heart.png', 'diamond.png', 'club.png'];
-    
+
     let currentIndex = cardTypes.indexOf(selectedCardType);
     let nextIndex = (currentIndex + 1) % cardTypes.length;
 
@@ -51,17 +51,25 @@ function calculateDiscreteProbability() {
     const probabilityPercentage = (probability * 100).toFixed(2);
 
     const explanation = `
-    Probability of drawing exactly ${numDesiredCards} ${selectedCardType.toUpperCase()} cards: ${probabilityPercentage}%\n
-    <p align="left"><strong>Explanation:<strong><p>
-    <p align="left">Total number of cards in the deck: 52.<p>
-    <p align="left">Number of cards in the selected suit (${selectedCardType.toUpperCase()}): ${cardsPerSuit}.<p>
-    <p align="left">Total number of ways to draw ${numCardsDrawn} cards: C(52, ${numCardsDrawn}).<p>
-    <p align="left">Total number of ways to choose ${numDesiredCards} ${selectedCardType.toUpperCase()} cards: C(13, ${numDesiredCards}).<p>
-    <p align="left">Total number of ways to choose the remaining ${numCardsDrawn - numDesiredCards} cards from non-${selectedCardType.toUpperCase()} cards: C(39, ${numCardsDrawn - numDesiredCards}).<p>
-    <p align="left">Using the formula P(X = k) = [C(13, ${numDesiredCards}) * C(39, ${numCardsDrawn - numDesiredCards})] / C(52, ${numCardsDrawn})<p>
-     <p align="left">the result is ${probabilityPercentage}%.<p>
+    Probability of drawing exactly ${numDesiredCards} ${selectedCardType.toUpperCase()} cards: ${probabilityPercentage}%<br>
+    <p align="left"><strong>Explanation:</strong></p>
+    <p align="left">Total number of cards in the deck: 52.</p>
+    <p align="left">Number of cards in the selected suit (${selectedCardType.toUpperCase()}): ${cardsPerSuit}.</p>
+    <p align="left">Total number of ways to draw ${numCardsDrawn} cards: C(52, ${numCardsDrawn}).</p>
+    <p align="left">Total number of ways to choose ${numDesiredCards} ${selectedCardType.toUpperCase()} cards: C(13, ${numDesiredCards}).</p>
+    <p align="left">Total number of ways to choose the remaining ${numCardsDrawn - numDesiredCards} cards from non-${selectedCardType.toUpperCase()} cards: C(39, ${numCardsDrawn - numDesiredCards}).</p>
+    <p align="left">
+     Using the formula: 
+     \\[
+     P(X = k) = \\frac{C(13, ${numDesiredCards}) \\cdot C(39, ${numCardsDrawn - numDesiredCards})}{C(52, ${numCardsDrawn})}
+     \\]
+   </p>
+     <p align="left">The result is ${probabilityPercentage}%.</p>
 `;
 
-// Display result and explanation
-document.getElementById('probabilityResult').innerHTML = explanation.trim();
+    // Display result and explanation
+    document.getElementById('probabilityResult').innerHTML = explanation.trim();
+
+    // Trigger MathJax to process the LaTeX and render the equation
+    MathJax.typeset();
 }

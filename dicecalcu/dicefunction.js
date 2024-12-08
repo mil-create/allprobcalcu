@@ -77,15 +77,26 @@ function calculateDiscreteDiceProbability() {
 
   // Display result with explanation and combinations
   document.getElementById('probabilityResult').innerHTML = `
-  Probability: <strong>${probability.toFixed(2)}%</strong><br>
-  <p align="left"><strong>Explanation:</strong><br></p>
-  <p align="left">Total possible outcomes: <strong>6^${numDice} = ${totalOutcomes}.</strong><br></p>
-  <p align="left">${explanation}</p>
-  <p align="left">Favorable outcomes: <strong>${favorableOutcomes}</strong>.<br></p>
-  <p align="left">Combinations: <strong>${combinations.map(comb => `(${comb.join(",")})`).join(", ")}</strong>.<br></p>
-  <p align="left">Formula: P = <strong>Favorable Outcomes / Total Outcomes.</strong><br></p>
-  <p align="left">P = <strong>${favorableOutcomes} / ${totalOutcomes} = ${probability.toFixed(2)}%.</strong></p>
+    Probability: <strong>${probability.toFixed(2)}%</strong><br>
+    <p align="left"><strong>Explanation:</strong></p>
+    <p align="left">Total possible outcomes: <strong>
+     \\[
+       6^{${numDice}} = ${totalOutcomes}.
+     \\]
+    </strong><br></p>
+    <p align="left">${explanation}</p>
+    <p align="left">Favorable outcomes: <strong>${favorableOutcomes}</strong>.<br></p>
+    <p align="left">Combinations: <strong>${combinations.map(comb => `(${comb.join(",")})`).join(", ")}</strong>.<br></p>
+    <p align="left">Formula: P = <strong>Favorable Outcomes / Total Outcomes.</strong><br></p>
+    <p align="left">
+     \\[
+       P = \\frac{${favorableOutcomes}}{${totalOutcomes}} = ${probability.toFixed(2)}\\%
+     \\]
+    </p>
   `;
+  
+  // Trigger MathJax to process the LaTeX and render the equation
+  MathJax.typeset();
 }
 
 // Helper function to count favorable outcomes and store combinations
@@ -110,6 +121,7 @@ function getFavorableOutcomes(numDice, targetSum, combinations) {
   roll(numDice, 0, []);
   return count;
 }
+
 
 // Attach the updateRangeInputs function to the dropdown's onchange event
 document.getElementById("comparisonType").addEventListener("change", updateRangeInputs);
